@@ -1,0 +1,25 @@
+{
+  "name": "memoramaplus",
+  "version": "1.0.0",
+  "description": "juego de memorama plus",
+  "main": "memorama.js",
+  "scripts": {
+    "test": "yes"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Almondcurve/Memorama.git"
+  },
+  "keywords": [
+    "yes"
+  ],
+  "author": "Rivas Barrera Luis Arturo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Almondcurve/Memorama/issues"
+  },
+  "homepage": "https://github.com/Almondcurve/Memorama#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
