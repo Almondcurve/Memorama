@@ -1,18 +1,24 @@
 // INICIO DE JUEGO DE MEMORAMA
 //1. Importación del módulo readline:
+const { log } = require('console');
+const readlineSync = require('readline-sync')
 const readline = require('readline');
-//Aquí, se importa el módulo readline de Node.js, que se utiliza para gestionar la entrada y salida de la línea de comandos.
 
+//Aquí, se importa el módulo readline de Node.js, que se utiliza para gestionar la entrada y salida de la línea de comandos.
+ const rl = readline.createInterface ({
+	input: process.stdin,
+	output:process.stdout
+ });
+
+jugadores = ['1','2','3','4']
+index = readlineSync.keyInSelect(jugadores,'cuantos jugadores seran?');
+console.log('ok, ' + 'disfruten de la partida');
 
 // 2. Creación de la interfaz readline:
 // Se crea una interfaz readline que permite al usuario interactuar con el juego a través de la entrada estándar (teclado) y la salida estándar (pantalla).
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
 //3. Definición de cartas y barajado:
-const cards = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+const cards = ['A', 'B', 'C', 'D', 'Yellow', 'Blue', 'Green', 'Red', 'White',1,2,3,4,5,'A', 'B', 'C', 'D', 'Yellow', 'Blue', 'Green', 'Red', 'White',1,2,3,4,5];
 const shuffledCards = shuffleArray(cards);
 //Se definen las cartas disponibles en el juego como letras del alfabeto, y luego se barajan llamando a la función shuffleArray.
 
@@ -41,13 +47,19 @@ function displayBoard() {
     }
   }
   console.log('\n');
+  console.log("-----------------");
+  console.log("  ");
 }
 // 6. Función checkMatch para verificar si dos cartas son iguales:
 // Esta función verifica si las dos cartas seleccionadas por el usuario son iguales y, en caso afirmativo, aumenta la cantidad de pares coincidentes.
+var contador=0;
 function checkMatch(card1, card2) {
   if (shuffledCards[card1] === shuffledCards[card2]) {
     console.log('¡Coincidencia!');
     matchedPairs++;
+        contador = contador + 1;        
+        console.log('Contador : '+contador);
+	//console.log('Peticion enviada');
     return true;
   } else {
     return false;
@@ -58,7 +70,7 @@ function checkMatch(card1, card2) {
 function main() {
   displayBoard();
   console.log('¡Bienvenido al juego de Memorama!');
-  console.log('Ingrese dos números separados por espacios para revelar cartas (por ejemplo, "0 1").');
+  console.log('Ingrese dos números separados por espacios para revelar cartas (por ejemplo, "0 27").');
   play();
 }
 
@@ -75,7 +87,7 @@ function play() {
       if (checkMatch(card1, card2)) {
         if (matchedPairs === shuffledCards.length / 2) {
           console.log('¡Felicidades! Has encontrado todas las coincidencias.');
-          rl.close();
+          readlineSync.close();
         } else {
           play();
         }
