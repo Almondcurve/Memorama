@@ -57,15 +57,25 @@ var contador = 0;
 function checkMatch(card1, card2) {
 	if (shuffledCards[card1] === shuffledCards[card2]) {
 		console.log('¡Coincidencia!');
+		console.log("-----------------");
 		matchedPairs++;
 		contador = contador + 1;
 		console.log('Contador : ' + contador);
 		//console.log('Peticion enviada');
 		return true;
 	} else {
+		console.log('¡No Coinciden!');
+		console.log("-----------------");
 		return false;
 	}
 }
+var players = [];
+
+for (let jugador = 0; jugador <= index; jugador++) {
+	players.push('jugador_' + jugador)	
+}
+console.log(players);
+
 // 7. Función main para iniciar el juego:
 // Esta función inicia el juego mostrando el tablero y dando la bienvenida al jugador.
 function main() {
@@ -91,9 +101,9 @@ function play() {
 		if (checkMatch(card1, card2)) {
 			//console.log('segundo')
 			if (matchedPairs === shuffledCards.length / 2) {
-				console.log('tercer')
+				//console.log('tercer')
 				console.log('¡Felicidades! Has encontrado todas las coincidencias.');
-				readlineSync.close();
+				rl.close();
 			} else {
 				//console.log('primer else')
 				play();
@@ -117,5 +127,6 @@ function play() {
 // 9. Lógica principal para iniciar el juego:
 // Finalmente, el juego se inicia llamando a la función main, que a su vez llama a la función play para comenzar la lógica del juego.
 main();
+
 
 // El juego continúa hasta que se encuentren todas las cartas coincidentes, momento en el cual se muestra un mensaje de felicitación y se cierra el juego utilizando rl.close(). Si las cartas seleccionadas no coinciden, se ocultan nuevamente después de un breve retraso (1 segundo), y el jugador puede intentar nuevamente. El código maneja la entrada del usuario y asegura que las selecciones sean válidas.
