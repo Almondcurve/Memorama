@@ -44,7 +44,9 @@ function displayBoard() {
 		if (revealedCards.includes(i)) {
 			process.stdout.write(shuffledCards[i] + '  ');
 		} else {
-			process.stdout.write('[]  ');
+			b=i
+			//process.stdout.write(b + '[]'+ '    ');
+			process.stdout.write('['+ b + ']' +'    ');
 		}
 	}
 	console.log('\n');
@@ -75,6 +77,16 @@ for (let jugador = 0; jugador <= index; jugador++) {
 	players.push('jugador_' + jugador)	
 }
 console.log(players);
+
+// Esto es un contador de intentos
+
+// let Intentos =0;
+
+// const cronometro = setInterval(() => {
+// 	Intentos++;
+// 	console.log(`Contador de Intentos: ${Intentos} Intentos`);
+// }, 1000);
+
 
 // 7. Función main para iniciar el juego:
 // Esta función inicia el juego mostrando el tablero y dando la bienvenida al jugador.
